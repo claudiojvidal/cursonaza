@@ -1,10 +1,16 @@
 package com.example.prjCursoNaza.curso;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.prjCursoNaza.matricula.Matricula;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,5 +36,13 @@ public class Curso extends BaseEntity {
 
     private int creditos;
 
+    @OneToMany
+    private List<Matricula> matriculas;
 
+    public void addMatricula(Matricula matricula) {
+        if (matriculas == null) {
+            matriculas = new ArrayList<>();
+        }
+        matriculas.add(matricula);
+    }
 }
