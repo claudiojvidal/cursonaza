@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,19 +43,15 @@ public class CursoController {
 
 
     @PostMapping
-    public Curso save(Curso curso) throws BadRequestException {
+    public Curso save(@RequestBody Curso curso) {
         log.info("Post curso : {}", curso);
-
-        if (!Objects.isNull(curso.getId())) {
-            throw new BadRequestException();
-        }
 
         return cursoRepository.save(curso);
     }
 
     @PatchMapping
-    public Curso update(Curso curso) throws BadRequestException {
-        log.info("Update curso : {}", curso);
+    public Curso update(@RequestBody Curso curso) throws BadRequestException {
+        log.info("Update curso : {}", curso.toString());
 
         if (!Objects.isNull(curso.getId())) {
             throw new BadRequestException();

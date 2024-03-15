@@ -1,10 +1,30 @@
-
+### Listar todos os cursos
 GET http://localhost:8080/curso
-###
+
+### Obter um curso por ID
 GET http://localhost:8080/curso/1
-###
-GET http://localhost:8080/estudante
+
+### Adicionar um novo curso
+POST http://localhost:8080/curso
+Content-Type: application/json
+
+{
+  "titulo": "Novo Curso",
+  "creditos": 5
+}
 
 
+### Atualizar um curso existente
+PATCH http://localhost:8080/curso
+Content-Type: application/json
+
+{
+  "id": 4,
+  "titulo": "Curso Atualizado",
+  "creditos": 6
+}
+
+### Excluir um curso por ID
+DELETE http://localhost:8080/curso/5
 
 
